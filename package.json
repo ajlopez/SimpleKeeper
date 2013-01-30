@@ -1,0 +1,16 @@
+{ "name": "simplekeeper"
+, "description": "Zookeeper-like distributed server, WIP"
+, "keywords": [ "zookeeper", "distributed", "nodejs", "server" ]
+, "version": "0.0.1alpha"
+, "author": "Angel 'Java' Lopez <webmaster@ajlopez.com> (http://www.ajlopez.com)"
+, "repository": { "type": "git", "url": "git://github.com/ajlopez/SimpleKeeper.git" }
+, "main": "./lib/simplekeeper.js"
+, "engines": { "node": ">= 0.6.0 && < 0.9.0" }
+, "scripts": {
+    "test": "node ./test.js"
+  }
+, "dependencies": {
+  }
+, "devDependencies": {
+  }
+}
