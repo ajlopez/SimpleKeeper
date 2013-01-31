@@ -274,3 +274,61 @@ exports['Delete'] = function (test) {
         test.done();
     }
 };
+
+exports['Delete Root'] = function (test) {
+    var server = sk.createServer();
+    
+    test.expect(13);
+    
+    server.setValue('/user/1/name', 'adam', step1);
+    
+    function step1(err) {
+        test.ok(!err);
+        server.setValue('/user/1/age', 800, step2);
+    }
+
+    function step2(err) {
+        test.ok(!err);
+        server.setValue('/user/2/name', 'eve', step3);
+    }
+
+    function step3(err) {
+        test.ok(!err);
+        server.setValue('/user/2/age', 700, step4);
+    }
+
+    function step4(err) {
+        test.ok(!err);
+        server.delete('/', step5);
+    }
+
+    function step5(err) {
+        test.ok(!err);
+        server.exists('/user/1', step6);
+    }
+
+    function step6(err, result) {
+        test.ok(!err);
+        test.equal(result, false);
+        server.exists('/user/2', step7);
+    }
+
+    function step7(err, result) {
+        test.ok(!err);
+        test.equal(result, false);
+        server.exists('/user', step8);
+    }
+
+    function step8(err, result) {
+        test.ok(!err);
+        test.equal(result, false);
+        server.exists('/', step9);
+    }
+
+    function step9(err, result) {
+        test.ok(!err);
+        test.equal(result, false);
+
+        test.done();
+    }
+};
