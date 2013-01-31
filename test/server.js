@@ -137,3 +137,39 @@ exports['Get Value Invalid Paths'] = function (test) {
         test.done();
     }
 };
+
+exports['Exists on Existent Path and Ascendants'] = function (test) {
+    var server = sk.createServer();
+    
+    test.expect(7);
+
+    server.setValue('/user/1', 'adam', step1);
+
+    function step1(err) {
+        test.ok(!err);
+
+        server.exists('/user/1', step2);
+    }
+
+    function step2(err, result) {
+        test.ok(!err);
+        test.equal(result, true);
+
+        server.exists('/user', step3);
+    }
+
+    function step3(err, result) {
+        test.ok(!err);
+        test.equal(result, true);
+
+        server.exists('/', step4);
+    }
+
+    function step4(err, result) {
+        test.ok(!err);
+        test.equal(result, true);
+
+        test.done();
+    }
+};
+
