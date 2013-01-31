@@ -70,6 +70,14 @@ exports['Exists on Non Existent Path'] = function (test) {
     test.done();
 };
 
+exports['Exists on Existent Path'] = function (test) {
+    var server = sk.createSyncServer();
+    
+    server.setValue('/user/1', 'adam');
+    test.equal(server.exists('/user/1'), true);
+    test.done();
+};
+
 function trycall(fn) {
     try {
         fn();
