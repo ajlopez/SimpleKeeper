@@ -138,6 +138,25 @@ exports['Get Children when Empty Path'] = function (test) {
     test.done();
 };
 
+exports['Delete'] = function (test) {
+    var server = sk.createSyncServer();
+    
+    server.setValue('/user/1/name', 'adam');
+    server.setValue('/user/1/age', 800);
+    server.setValue('/user/2/name', 'eve');
+    server.setValue('/user/2/age', 700);
+    
+    server.delete('/user/1');
+    
+    var result = server.getChildren('/user');
+    
+    test.ok(result);
+    test.equal(result.length, 1);
+    test.equal(result[0], '2');
+    
+    test.done();
+};
+
 function trycall(fn) {
     try {
         fn();
@@ -147,3 +166,4 @@ function trycall(fn) {
         return err;
     }
 }
+
