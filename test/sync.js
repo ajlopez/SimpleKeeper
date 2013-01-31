@@ -24,7 +24,6 @@ exports['Set and Get Root Value'] = function (test) {
     test.done();
 };
 
-
 exports['Set and Get Path Values'] = function (test) {
 	var server = sk.createSyncServer();
     
