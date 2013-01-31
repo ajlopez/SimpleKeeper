@@ -88,6 +88,34 @@ exports['Exists on Existent Path and Ascendants'] = function (test) {
     test.done();
 };
 
+exports['Get Children'] = function (test) {
+    var server = sk.createSyncServer();
+    
+    server.setValue('/user/1', 'adam');
+    server.setValue('/user/2', 'eve');
+    
+    var result = server.getChildren('/user');
+    
+    test.ok(result);
+    test.equal(2, result.length);
+    test.ok(result.indexOf('1') >= 0);
+    test.ok(result.indexOf('2') >= 0);
+    
+    test.done();
+};
+
+exports['Get Children when Empty Path'] = function (test) {
+    var server = sk.createSyncServer();
+    
+    server.setValue('/user/1', 'adam');
+    server.setValue('/user/2', 'eve');
+    
+    var result = server.getChildren('/users');
+    
+    test.equal(result, null);
+    test.done();
+};
+
 function trycall(fn) {
     try {
         fn();
