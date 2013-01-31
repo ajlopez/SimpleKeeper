@@ -108,3 +108,32 @@ exports['Set Value Invalid Paths'] = function (test) {
         test.done();
     }
 };
+
+exports['Get Value Invalid Paths'] = function (test) {
+	var server = sk.createServer();
+    
+    test.expect(4);
+    
+    server.getValue(null, step1);
+    
+    function step1(err) {
+        test.equal(err, 'invalid path');
+        server.getValue('', step2);
+    }
+    
+    function step2(err) {
+        test.equal(err, 'invalid path');
+        server.getValue(123, step3);
+    }
+    
+    function step3(err) {
+        test.equal(err, 'invalid path');
+        server.getValue('foo', step4);
+    }
+    
+    function step4(err) {
+        test.equal(err, 'invalid path');
+        
+        test.done();
+    }
+};
