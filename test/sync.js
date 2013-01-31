@@ -52,6 +52,17 @@ exports['Set Value Invalid Paths'] = function (test) {
     test.done();
 };
 
+exports['Get Value Invalid Paths'] = function (test) {
+	var server = sk.createSyncServer();
+    
+    test.ok(trycall(function () { server.getValue(null) }), 'invalid path');
+    test.ok(trycall(function () { server.getValue('') }), 'invalid path');
+    test.ok(trycall(function () { server.getValue(123) }), 'invalid path');
+    test.ok(trycall(function () { server.getValue('foo') }), 'invalid path');
+    
+    test.done();
+};
+
 function trycall(fn) {
     try {
         fn();
