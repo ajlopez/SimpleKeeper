@@ -20,7 +20,6 @@ exports['Get Empty Root Value'] = function (test) {
     });
 };
 
-
 exports['Set and Get Root Value'] = function (test) {
 	var server = sk.createServer();
     
