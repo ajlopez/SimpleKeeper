@@ -202,3 +202,34 @@ exports['Exists Invalid Paths'] = function (test) {
         test.done();
     }
 };
+
+exports['Get Children'] = function (test) {
+    var server = sk.createServer();
+    
+    test.expect(7);
+    
+    server.setValue('/user/1', 'adam', step1);
+    
+    function step1(err) {
+        test.ok(!err);
+        
+        server.setValue('/user/2', 'eve', step2);
+    }
+    
+    function step2(err) {
+        test.ok(!err);
+        
+        server.getChildren('/user', step3);
+    }
+
+    function step3(err, result) {
+        test.ok(!err);
+        test.ok(result);
+        test.equal(2, result.length);
+        test.ok(result.indexOf('1') >= 0);
+        test.ok(result.indexOf('2') >= 0);
+
+        test.done();
+    }
+};
+
