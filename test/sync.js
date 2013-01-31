@@ -52,6 +52,28 @@ exports['Set Value Invalid Paths'] = function (test) {
     test.done();
 };
 
+exports['Get Children Invalid Paths'] = function (test) {
+	var server = sk.createSyncServer();
+    
+    test.ok(trycall(function () { server.getChildren(null) }), 'invalid path');
+    test.ok(trycall(function () { server.getChildren('') }), 'invalid path');
+    test.ok(trycall(function () { server.getChildren(123) }), 'invalid path');
+    test.ok(trycall(function () { server.getChildren('foo') }), 'invalid path');
+    
+    test.done();
+};
+
+exports['Exists Invalid Paths'] = function (test) {
+	var server = sk.createSyncServer();
+    
+    test.ok(trycall(function () { server.exists(null) }), 'invalid path');
+    test.ok(trycall(function () { server.exists('') }), 'invalid path');
+    test.ok(trycall(function () { server.exists(123) }), 'invalid path');
+    test.ok(trycall(function () { server.exists('foo') }), 'invalid path');
+    
+    test.done();
+};
+
 exports['Get Value Invalid Paths'] = function (test) {
 	var server = sk.createSyncServer();
     
