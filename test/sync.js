@@ -23,3 +23,20 @@ exports['Set and Get Root Value'] = function (test) {
     test.equal(result, 'foo');
     test.done();
 };
+
+
+exports['Set and Get Path Values'] = function (test) {
+	var server = sk.createSyncServer();
+    
+    server.setValue('/user/1', 'adam');
+    server.setValue('/user/2', 'eve');
+    
+    var result = server.getValue('/user/1');
+    test.ok(result);
+    test.equal(result, 'adam');
+    
+    result = server.getValue('/user/2');
+    test.ok(result);
+    test.equal(result, 'eve');
+    test.done();
+};
