@@ -233,3 +233,44 @@ exports['Get Children'] = function (test) {
     }
 };
 
+exports['Delete'] = function (test) {
+    var server = sk.createServer();
+    
+    test.expect(9);
+    
+    server.setValue('/user/1/name', 'adam', step1);
+    
+    function step1(err) {
+        test.ok(!err);
+        server.setValue('/user/1/age', 800, step2);
+    }
+
+    function step2(err) {
+        test.ok(!err);
+        server.setValue('/user/2/name', 'eve', step3);
+    }
+
+    function step3(err) {
+        test.ok(!err);
+        server.setValue('/user/2/age', 700, step4);
+    }
+
+    function step4(err) {
+        test.ok(!err);
+        server.delete('/user/1', step5);
+    }
+
+    function step5(err) {
+        test.ok(!err);
+        server.getChildren('/user', step6);
+    }
+
+    function step6(err, result) {
+        test.ok(!err);
+        test.ok(result);
+        test.equal(result.length, 1);
+        test.equal(result[0], '2');
+
+        test.done();
+    }
+};
