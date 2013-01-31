@@ -168,6 +168,24 @@ exports['Delete'] = function (test) {
     test.done();
 };
 
+exports['Delete Root'] = function (test) {
+    var server = sk.createSyncServer();
+    
+    server.setValue('/user/1/name', 'adam');
+    server.setValue('/user/1/age', 800);
+    server.setValue('/user/2/name', 'eve');
+    server.setValue('/user/2/age', 700);
+
+    server.delete('/');
+
+    test.equal(server.exists('/user/1'), false);
+    test.equal(server.exists('/user/2'), false);
+    test.equal(server.exists('/user'), false);
+    test.equal(server.exists('/'), false);
+
+    test.done();
+};
+
 function trycall(fn) {
     try {
         fn();
