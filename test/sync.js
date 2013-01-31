@@ -78,6 +78,16 @@ exports['Exists on Existent Path'] = function (test) {
     test.done();
 };
 
+exports['Exists on Existent Path and Ascendants'] = function (test) {
+    var server = sk.createSyncServer();
+    
+    server.setValue('/user/1', 'adam');
+    test.equal(server.exists('/user/1'), true);
+    test.equal(server.exists('/user'), true);
+    test.equal(server.exists('/'), true);
+    test.done();
+};
+
 function trycall(fn) {
     try {
         fn();
