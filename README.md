@@ -95,6 +95,10 @@ TBD
 - Distributed Server
 - Invalid path when it ends with /
 
+## Versions
+
+- 0.0.1: Published
+
 ## Contribution
 
 Feel free to [file issues](https://github.com/ajlopez/SimpleKeeper) and submit
