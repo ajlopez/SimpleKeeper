@@ -40,3 +40,24 @@ exports['Set and Get Path Values'] = function (test) {
     test.equal(result, 'eve');
     test.done();
 };
+
+exports['Set Value Invalid Paths'] = function (test) {
+	var server = sk.createSyncServer();
+    
+    test.ok(trycall(function () { server.setValue(null, 'adam') }), 'invalid path');
+    test.ok(trycall(function () { server.setValue('', 'adam') }), 'invalid path');
+    test.ok(trycall(function () { server.setValue(123, 'adam') }), 'invalid path');
+    test.ok(trycall(function () { server.setValue('foo', 'adam') }), 'invalid path');
+    
+    test.done();
+};
+
+function trycall(fn) {
+    try {
+        fn();
+        return null;
+    }
+    catch (err) {
+        return err;
+    }
+}
