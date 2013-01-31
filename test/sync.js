@@ -63,6 +63,13 @@ exports['Get Value Invalid Paths'] = function (test) {
     test.done();
 };
 
+exports['Exists on Non Existent Path'] = function (test) {
+    var server = sk.createSyncServer();
+    
+    test.equal(server.exists('/user/1'), false);
+    test.done();
+};
+
 function trycall(fn) {
     try {
         fn();
