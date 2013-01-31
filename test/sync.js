@@ -85,6 +85,17 @@ exports['Get Value Invalid Paths'] = function (test) {
     test.done();
 };
 
+exports['Delete Invalid Paths'] = function (test) {
+	var server = sk.createSyncServer();
+    
+    test.ok(trycall(function () { server.delete(null) }), 'invalid path');
+    test.ok(trycall(function () { server.delete('') }), 'invalid path');
+    test.ok(trycall(function () { server.delete(123) }), 'invalid path');
+    test.ok(trycall(function () { server.delete('foo') }), 'invalid path');
+    
+    test.done();
+};
+
 exports['Exists on Non Existent Path'] = function (test) {
     var server = sk.createSyncServer();
     
