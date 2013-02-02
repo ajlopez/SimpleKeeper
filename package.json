@@ -12,5 +12,7 @@
 , "dependencies": {
   }
 , "devDependencies": {
+    "nodeunit": ">= 0.7.4",
+	"simpleinvoke": "0.0.1"
   }
 }

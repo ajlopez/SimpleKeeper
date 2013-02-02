@@ -1,5 +1,6 @@
 
-var sk = require('..');
+var sk = require('..'),
+    si = require('simpleinvoke');
 
 exports['Create Server'] = function (test) {
 	var server = sk.createServer();
@@ -40,43 +41,22 @@ exports['Set and Get Root Value'] = function (test) {
 exports['Set and Get Path Values'] = function (test) {
 	var server = sk.createServer();
     
-    test.expect(9);
+    test.expect(5);
     
-    server.setValue('/user/1', 'adam', step1);
-    
-    function step1(err) {
-        test.ok(!err);
-        
-        server.setValue('/user/2', 'eve', step2);
-    }
-    
-    function step2(err) {
-        test.ok(!err);
-        
-        server.setValue('/user/2', 'eve', step3);
-    }
-
-    function step3(err) {
-        test.ok(!err);
-        
-        server.getValue('/user/1', step4);
-    }
-
-    function step4(err, value) {
-        test.ok(!err);
-        test.ok(value);
-        test.equal(value, 'adam');
-        
-        server.getValue('/user/2', step5);
-    }
-
-    function step5(err, value) {
-        test.ok(!err);
-        test.ok(value);
-        test.equal(value, 'eve');
-        
-        test.done();
-    }
+    si.invoke(
+        server, server.setValue, ['/user/1', 'adam'],
+        server, server.setValue, ['/user/2', 'eve'],
+        server, server.getValue, ['/user/1'],
+        server, server.getValue, ['/user/2'],
+        function (err, results) {
+            test.ok(!err);
+            test.ok(results);
+            test.equal(results.length, 4);
+            test.equal(results[2], 'adam');
+            test.equal(results[3], 'eve');
+            test.done();
+        }
+    );
 };
 
 exports['Set Value Invalid Paths'] = function (test) {
