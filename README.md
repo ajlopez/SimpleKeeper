@@ -98,7 +98,7 @@ TBD
 ## Versions
 
 - 0.0.1: Published
-- 0.0.2: Under development, in master. Leader
+- 0.0.2: Under development, in master. Leader server. Distributed servers
 
 ## Contribution
 
