@@ -29,37 +29,37 @@ var server = simplekeeper.createSyncServer('simplekeeper');
 
 Get value
 ```js
-var value = simplekeeper.getValue('/user/1/name');
+var value = server.getValue('/user/1/name');
 ```
 Return null if path does not exist.
 
 Set value
 ```js
-simplekeeper.setValue('/user/1/name', 'adam');
-simplekeeper.setValue('/user/1/age', 800);
+server.setValue('/user/1/name', 'adam');
+server.setValue('/user/1/age', 800);
 ```
 
 Get children
 ```js
-var names = simplekeeper.getChildren('/user/1'); // ['name', 'age']
+var names = server.getChildren('/user/1'); // ['name', 'age']
 ```
 
 Delete node (and its children, if any)
 ```js
-simplekeeper.delete('/user/1');
+server.delete('/user/1');
 ```
 
 Exists node
 ```js
-simplekeeper.exists('/user/1'); // false after deletoin
+server.exists('/user/1'); // false after deletoin
 ```
 
 Invalid path (throws exceptions)
 ```js
-simplekeeper.getValue(null);   // null
-simplekeeper.getValue(123);    // not a string
-simplekeeper.getValue('');     // empty string
-simplekeeper.getValue('foo');  // it does not start with /
+server.getValue(null);   // null
+server.getValue(123);    // not a string
+server.getValue('');     // empty string
+server.getValue('foo');  // it does not start with /
 ```
 
 ### Asynchronous Server
@@ -72,8 +72,22 @@ var server = simplekeeper.createServer('simplekeeper');
 Its functions are the same of a synchronous server, but with a callback. I.e.:
 Get Value
 ```js
-var value = simplekeeper.getValue('/user/1/name', function (err, value) { ... } );
+var value = server.getValue('/user/1/name', function (err, value) { ... } );
 ```
+
+An asynchronous server can be exposed to other machines:
+```js
+server.listen(port, host);
+```
+
+A remote client:
+```js
+var client = simplekeeper.createClient(port, host, function (server) {
+	// server is a reference to the remote server, with the same interface
+	server.setValue('/user/1/name', 'Adam', callback);
+});
+```
+
 
 ## Development
 
