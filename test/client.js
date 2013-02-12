@@ -3,7 +3,7 @@ var sk = require('..'),
     si = require('simpleinvoke');
 
 exports['Create Server and Client'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     server.listen(3000);
     
     test.expect(1);
@@ -17,7 +17,7 @@ exports['Create Server and Client'] = function (test) {
 };
 
 exports['Get Empty Root Value'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     server.listen(3000);
 
     test.expect(3);
@@ -35,7 +35,7 @@ exports['Get Empty Root Value'] = function (test) {
 };
 
 exports['Set and Get Root Value'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     server.listen(3000);
     
     test.expect(4);
@@ -58,7 +58,7 @@ exports['Set and Get Root Value'] = function (test) {
 };
 
 exports['Set Value Invalid Paths'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     server.listen(3000);
     
     test.expect(5);
@@ -94,7 +94,7 @@ exports['Set Value Invalid Paths'] = function (test) {
 };
 
 exports['Get Value Invalid Paths'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     server.listen(3000);
     
     test.expect(5);
@@ -130,7 +130,7 @@ exports['Get Value Invalid Paths'] = function (test) {
 };
 
 exports['Exists on Existent Path and Ascendants'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     server.listen(3000);
     
     test.expect(7);
@@ -159,7 +159,7 @@ exports['Exists on Existent Path and Ascendants'] = function (test) {
 };
 
 exports['Get Children'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     server.listen(3000);
     
     test.expect(6);
@@ -186,7 +186,7 @@ exports['Get Children'] = function (test) {
 };
 
 exports['Delete'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     server.listen(3000);
     
     test.expect(6);
@@ -216,7 +216,7 @@ exports['Delete'] = function (test) {
 };
 
 exports['Delete Root'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     server.listen(3000);
     
     test.expect(8);
@@ -251,7 +251,7 @@ exports['Delete Root'] = function (test) {
 };
 
 exports['Exists Invalid Paths'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     server.listen(3000);
     
     test.expect(5);
@@ -287,7 +287,7 @@ exports['Exists Invalid Paths'] = function (test) {
 };
 
 exports['Delete Invalid Paths'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     server.listen(3000);
     
     test.expect(5);

@@ -3,14 +3,14 @@ var sk = require('..'),
     si = require('simpleinvoke');
 
 exports['Create Server'] = function (test) {
-	var server = sk.createServer();
-	test.ok(server);
-	test.equal(typeof server, 'object');
+    var server = sk.createServer();
+    test.ok(server);
+    test.equal(typeof server, 'object');
     test.done();
 };
 
 exports['Get Empty Root Value'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
 
     test.expect(2);
     
@@ -22,7 +22,7 @@ exports['Get Empty Root Value'] = function (test) {
 };
 
 exports['Set and Get Root Value'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     
     test.expect(4);
     
@@ -39,7 +39,7 @@ exports['Set and Get Root Value'] = function (test) {
 };
 
 exports['Set and Get Path Values'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     
     test.expect(5);
     
@@ -60,7 +60,7 @@ exports['Set and Get Path Values'] = function (test) {
 };
 
 exports['Set Value Invalid Paths'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     
     test.expect(4);
 
@@ -89,7 +89,7 @@ exports['Set Value Invalid Paths'] = function (test) {
 };
 
 exports['Get Value Invalid Paths'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     
     test.expect(4);
     
@@ -240,7 +240,7 @@ exports['Exists Invalid Paths'] = function (test) {
 };
 
 exports['Exists Invalid Paths'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     
     test.expect(4);
     
@@ -269,7 +269,7 @@ exports['Exists Invalid Paths'] = function (test) {
 };
 
 exports['Delete Invalid Paths'] = function (test) {
-	var server = sk.createServer();
+    var server = sk.createServer();
     
     test.expect(4);
     
