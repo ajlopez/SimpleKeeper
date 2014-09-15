@@ -6,7 +6,7 @@ exports['Create Server and Client'] = function (test) {
     var server = sk.createServer();
     server.listen(3000);
     
-    test.expect(1);
+    test.async();
     
     var client = sk.createClient(3000, function(remote) {
         test.ok(remote);
@@ -20,7 +20,7 @@ exports['Get Empty Root Value'] = function (test) {
     var server = sk.createServer();
     server.listen(3000);
 
-    test.expect(3);
+    test.async();
 
     var client = sk.createClient(3000, function(remote) {
         test.ok(remote);
@@ -38,7 +38,7 @@ exports['Set and Get Root Value'] = function (test) {
     var server = sk.createServer();
     server.listen(3000);
     
-    test.expect(4);
+    test.async();
 
     var client = sk.createClient(3000, function(remote) {
         test.ok(remote);
@@ -61,7 +61,7 @@ exports['Set Value Invalid Paths'] = function (test) {
     var server = sk.createServer();
     server.listen(3000);
     
-    test.expect(5);
+    test.async();
 
     var client = sk.createClient(3000, function(remote) {
         test.ok(remote);
@@ -97,7 +97,7 @@ exports['Get Value Invalid Paths'] = function (test) {
     var server = sk.createServer();
     server.listen(3000);
     
-    test.expect(5);
+    test.async();
     
     var client = sk.createClient(3000, function(remote) {
         test.ok(remote);
@@ -133,7 +133,7 @@ exports['Exists on Existent Path and Ascendants'] = function (test) {
     var server = sk.createServer();
     server.listen(3000);
     
-    test.expect(7);
+    test.async();
     
     var client = sk.createClient(3000, function(remote) {
         test.ok(remote);
@@ -162,7 +162,7 @@ exports['Get Children'] = function (test) {
     var server = sk.createServer();
     server.listen(3000);
     
-    test.expect(6);
+    test.async();
     
     var client = sk.createClient(3000, function(remote) {
         test.ok(remote);
@@ -189,7 +189,7 @@ exports['Delete'] = function (test) {
     var server = sk.createServer();
     server.listen(3000);
     
-    test.expect(6);
+    test.async();
     
     var client = sk.createClient(3000, function(remote) {
         test.ok(remote);
@@ -219,7 +219,7 @@ exports['Delete Root'] = function (test) {
     var server = sk.createServer();
     server.listen(3000);
     
-    test.expect(8);
+    test.async();
     
     var client = sk.createClient(3000, function(remote) {
         test.ok(remote);
@@ -254,7 +254,7 @@ exports['Exists Invalid Paths'] = function (test) {
     var server = sk.createServer();
     server.listen(3000);
     
-    test.expect(5);
+    test.async();
     
     var client = sk.createClient(3000, function(remote) {
         test.ok(remote);
@@ -290,7 +290,7 @@ exports['Delete Invalid Paths'] = function (test) {
     var server = sk.createServer();
     server.listen(3000);
     
-    test.expect(5);
+    test.async();
     
     var client = sk.createClient(3000, function(remote) {
         test.ok(remote);

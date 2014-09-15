@@ -8,7 +8,7 @@ exports['Create Server and Leader'] = function (test) {
 
     server.setLeader(leader);
     
-    test.expect(5);
+    test.async(5);
     
     si.invoke(
         server, server.setValue, ['/user/1', 'adam'],
@@ -33,7 +33,7 @@ exports['Create Servers and Leader'] = function (test) {
     server1.setLeader(leader);
     server2.setLeader(leader);
     
-    test.expect(9);
+    test.async();
     
     si.invoke(
         server1, server1.setValue, ['/user/1', 'adam'],

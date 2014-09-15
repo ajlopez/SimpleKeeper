@@ -12,7 +12,7 @@ exports['Create Server'] = function (test) {
 exports['Get Empty Root Value'] = function (test) {
     var server = sk.createServer();
 
-    test.expect(2);
+    test.async();
     
     var result = server.getValue('/', function(err, value) {
         test.ok(!err);
@@ -24,7 +24,7 @@ exports['Get Empty Root Value'] = function (test) {
 exports['Set and Get Root Value'] = function (test) {
     var server = sk.createServer();
     
-    test.expect(4);
+    test.async();
     
     server.setValue('/', 'foo', function (err) {
         test.ok(!err);
@@ -41,7 +41,7 @@ exports['Set and Get Root Value'] = function (test) {
 exports['Set and Get Path Values'] = function (test) {
     var server = sk.createServer();
     
-    test.expect(5);
+    test.async();
     
     si.invoke(
         server, server.setValue, ['/user/1', 'adam'],
@@ -62,7 +62,7 @@ exports['Set and Get Path Values'] = function (test) {
 exports['Set Value Invalid Paths'] = function (test) {
     var server = sk.createServer();
     
-    test.expect(4);
+    test.async();
 
     server.setValue(null, 'adam', step1);
     
@@ -91,7 +91,7 @@ exports['Set Value Invalid Paths'] = function (test) {
 exports['Get Value Invalid Paths'] = function (test) {
     var server = sk.createServer();
     
-    test.expect(4);
+    test.async();
     
     server.getValue(null, step1);
     
@@ -120,7 +120,7 @@ exports['Get Value Invalid Paths'] = function (test) {
 exports['Exists on Existent Path and Ascendants'] = function (test) {
     var server = sk.createServer();
     
-    test.expect(6);
+    test.async();
 
     si.invoke(
         server, server.setValue, ['/user/1', 'adam'],
@@ -142,7 +142,7 @@ exports['Exists on Existent Path and Ascendants'] = function (test) {
 exports['Get Children'] = function (test) {
     var server = sk.createServer();
     
-    test.expect(5);
+    test.async();
 
     si.invoke(
         server, server.setValue, ['/user/1', 'adam'],
@@ -162,7 +162,7 @@ exports['Get Children'] = function (test) {
 exports['Delete'] = function (test) {
     var server = sk.createServer();
     
-    test.expect(5);
+    test.async();
     
     si.invoke(
         server, server.setValue, ['/user/1/name', 'adam'],
@@ -185,7 +185,7 @@ exports['Delete'] = function (test) {
 exports['Delete Root'] = function (test) {
     var server = sk.createServer();
     
-    test.expect(7);
+    test.async();
     
     si.invoke(
         server, server.setValue, ['/user/1/name', 'adam'],
@@ -213,7 +213,7 @@ exports['Delete Root'] = function (test) {
 exports['Exists Invalid Paths'] = function (test) {
 	var server = sk.createServer();
     
-    test.expect(4);
+    test.async();
     
     server.exists(null, step1);
     
@@ -242,7 +242,7 @@ exports['Exists Invalid Paths'] = function (test) {
 exports['Exists Invalid Paths'] = function (test) {
     var server = sk.createServer();
     
-    test.expect(4);
+    test.async();
     
     server.exists(null, step1);
     
@@ -271,7 +271,7 @@ exports['Exists Invalid Paths'] = function (test) {
 exports['Delete Invalid Paths'] = function (test) {
     var server = sk.createServer();
     
-    test.expect(4);
+    test.async();
     
     server.delete(null, step1);
     
